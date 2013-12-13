@@ -7,6 +7,7 @@ namespace IC\Bundle\Base\SecurityBundle\Tests\Twig\Extension;
 
 use IC\Bundle\Base\SecurityBundle\Twig\Extension\SecurityExtension;
 use IC\Bundle\Base\TestBundle\Test\TestCase;
+use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
 
 /**
  * SecurityExtensionTest
@@ -60,8 +61,8 @@ class SecurityExtensionTest extends TestCase
     public function provideDataForHasPermission()
     {
         return array(
-            array(true,  'ic_base_security.service.view', true),
-            array(false, 'ic_base_security.service.view', false),
+            array(true,  'ic_user_security.service.view', true),
+            array(false, 'ic_user_security.service.view', false),
         );
     }
 
@@ -76,10 +77,12 @@ class SecurityExtensionTest extends TestCase
      */
     public function testIsAuthorized($expected, $authorization, $result)
     {
+        $expression = array(new Expression($authorization));
+
         $this->authorizationService
              ->expects($this->once())
-             ->method('isAuthorized')
-             ->with($this->equalTo($authorization))
+             ->method('isGranted')
+             ->with($this->equalTo($expression))
              ->will($this->returnValue($result));
 
         $this->assertEquals($expected, $this->securityExtension->isAuthorized($authorization));

@@ -5,7 +5,6 @@
 
 namespace IC\Bundle\Base\SecurityBundle\Service;
 
-use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
@@ -17,7 +16,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
  * @author John Cartwright <johnc@nationalfibre.net>
  * @author Danilo Cabello <daniloc@nationalfibre.net>
  */
-class AuthorizationService
+class AuthorizationService implements AuthorizationServiceInterface
 {
     /**
      * @var \Symfony\Component\Security\Core\SecurityContextInterface
@@ -39,30 +38,30 @@ class AuthorizationService
      *
      * @param string $permission
      *
-     * @throws \InvalidArgumentException
+     * @throws \InvalidDomainObjectException
      *
      * @return boolean
      */
     public function hasPermission($permission)
     {
-        if ( ! is_string($permission)) {
-             throw new \InvalidArgumentException('Expected string as permission.');
-        }
+        $objectIdentity = $this->createObjectIdentity($permission);
 
-        return $this->isGranted('CONSUME', $permission);
+        return $this->securityContext->isGranted('CONSUME', $objectIdentity);
     }
 
     /**
      * Validate if authenticated token has a given object permission.
      *
-     * @param string $operation    string
-     * @param mixed  $domainObject string|object
+     * @param string|array  $operation
+     * @param string|object $domainObject
      *
      * @return boolean
      */
-    public function isGranted($operation, $domainObject)
+    public function isGranted($operation, $domainObject = null)
     {
-        $objectIdentity = $this->createObjectIdentity($domainObject);
+        $objectIdentity = $domainObject
+            ? $this->createObjectIdentity($domainObject)
+            : null;
 
         return $this->securityContext->isGranted($operation, $objectIdentity);
     }
@@ -81,25 +80,5 @@ class AuthorizationService
         }
 
         return ObjectIdentity::fromDomainObject($domainObject);
-    }
-
-    /**
-     * Is user authorized?
-     *
-     * @param mixed $authorization Authorization check using ROLE_ attribute or expression-based authorization language
-     *
-     * @return boolean
-     *
-     * @deprecated Use isGranted or hasPermission on this same class instead.
-     */
-    public function isAuthorized($authorization)
-    {
-        if ( ! $authorization) {
-            return true;
-        }
-
-        $expression = array(new Expression($authorization));
-
-        return $this->securityContext->isGranted($expression);
     }
 }

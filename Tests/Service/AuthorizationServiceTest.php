@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Util\ClassUtils;
  * @group ICBaseSecurityBundle
  * @group Service
  * @group Unit
- * 
+ *
  * @author Anthon Pang <anthonp@nationalfibre.net>
  * @author Kinn Juliao <kinnj@nationalfibre.net>
  * @author Danilo Cabello <daniloc@nationalfibre.net>
@@ -71,16 +71,6 @@ class AuthorizationServiceTest extends TestCase
     }
 
     /**
-     * Test has permission requires string.
-     *
-     * @expectedException \InvalidArgumentException
-     */
-    public function testHasPermissionRequiresString()
-    {
-        $this->authorizationService->hasPermission(new \StdClass);
-    }
-
-    /**
      * [testIsGranted description]
      *
      * @param boolean                                              $expected
@@ -130,27 +120,6 @@ class AuthorizationServiceTest extends TestCase
             ->will($this->returnValue('getObjectIdentifier()'));
 
         return $domainObject;
-    }
-
-    /**
-     * Test isAuthorized
-     *
-     * @param boolean $expected      Expected result
-     * @param mixed   $authorization Authorization parameter
-     * @param mixed   $expression    Is granted expression parameter
-     * @param mixed   $isGranted     Is granted return result
-     *
-     * @dataProvider provideDataForIsAuthorized
-     */
-    public function testIsAuthorized($expected, $authorization, $expression, $isGranted)
-    {
-        $this->securityContext
-             ->expects($this->any())
-             ->method('isGranted')
-             ->with($this->equalTo($expression), $this->equalTo(null))
-             ->will($this->returnValue($isGranted));
-
-        $this->assertEquals($expected, $this->authorizationService->isAuthorized($authorization));
     }
 
     /**

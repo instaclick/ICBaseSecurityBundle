@@ -5,7 +5,8 @@
 
 namespace IC\Bundle\Base\SecurityBundle\Twig\Extension;
 
-use IC\Bundle\Base\SecurityBundle\Service\AuthorizationService;
+use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
+use IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface;
 
 /**
  * SecurityExtension exposes security context features.
@@ -16,16 +17,16 @@ use IC\Bundle\Base\SecurityBundle\Service\AuthorizationService;
 class SecurityExtension extends \Twig_Extension
 {
     /**
-     * @var IC\Bundle\Base\SecurityBundle\Service\AuthorizationService
+     * @var IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface
      */
     private $authorizationService;
 
     /**
      * Define Authorization Service.
      *
-     * @param IC\Bundle\Base\SecurityBundle\Service\AuthorizationService $authorizationService
+     * @param IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface $authorizationService
      */
-    public function setAuthorizationService(AuthorizationService $authorizationService)
+    public function setAuthorizationService(AuthorizationServiceInterface $authorizationService)
     {
         $this->authorizationService = $authorizationService;
     }
@@ -51,7 +52,13 @@ class SecurityExtension extends \Twig_Extension
      */
     public function isAuthorized($authorization)
     {
-        return $this->authorizationService->isAuthorized($authorization);
+        if ( ! $authorization) {
+            return true;
+        }
+
+        $expression = array(new Expression($authorization));
+
+        return $this->authorizationService->isGranted($expression);
     }
 
     /**
