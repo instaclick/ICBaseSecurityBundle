@@ -49,7 +49,7 @@ abstract class PermissionDataFixture extends AbstractFixture implements Containe
                 $aclProvider->createAcl($objectIdentity);
             }
 
-            $this->setReferenceIdentity($referenceName, $objectIdentity);
+            $this->referenceRepository->setReferenceIdentity($referenceName, $objectIdentity);
         }
     }
 

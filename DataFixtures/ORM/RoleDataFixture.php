@@ -23,7 +23,7 @@ abstract class RoleDataFixture extends AbstractFixture
         $roleList = $this->getRoleList();
 
         foreach ($roleList as $referenceName => $roleName) {
-            $this->setReferenceIdentity($referenceName, new RoleSecurityIdentity($roleName));
+            $this->referenceRepository->setReferenceIdentity($referenceName, new RoleSecurityIdentity($roleName));
         }
     }
 
