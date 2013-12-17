@@ -96,8 +96,8 @@ class SecurityExtensionTest extends TestCase
     public function provideDataForIsAuthorized()
     {
         return array(
-            array(true,  'hasRole("ROLE_EXECUTIVE")', true),
-            array(false, 'hasRole("ROLE_AFFILIATE")', false),
+            array(true,  'hasRole("ROLE_AFFILIATE_EXECUTIVE")', true),
+            array(false, 'hasRole("ROLE_AFFILIATE_USER")', false),
         );
     }
 
