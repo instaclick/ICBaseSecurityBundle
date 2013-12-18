@@ -61,8 +61,8 @@ class SecurityExtensionTest extends TestCase
     public function provideDataForHasPermission()
     {
         return array(
-            array(true,  'ic_user_security.service.view', true),
-            array(false, 'ic_user_security.service.view', false),
+            array(true,  'ic_foo_bar.service.view', true),
+            array(false, 'ic_foo_bar.service.view', false),
         );
     }
 
