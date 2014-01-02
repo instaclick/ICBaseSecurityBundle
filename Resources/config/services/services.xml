@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="ic_base_security.class.access_token">IC\Bundle\Base\SecurityBundle\Service\AccessTokenServiceInterface</parameter>
         <parameter key="ic_base_security.class.authentication">IC\Bundle\Base\SecurityBundle\Service\AuthenticationServiceInterface</parameter>
         <parameter key="ic_base_security.class.authorization">IC\Bundle\Base\SecurityBundle\Service\AuthorizationService</parameter>
         <parameter key="ic_base_security.class.password">IC\Bundle\Base\SecurityBundle\Service\PasswordService</parameter>
@@ -26,5 +27,8 @@
 
         <service id="ic_base_security.service.authentication"
                  class="%ic_base_security.class.authentication%" />
+
+        <service id="ic_base_security.service.access_token"
+                 class="%ic_base_security.class.access_token%" />
     </services>
 </container>
