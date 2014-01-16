@@ -5,7 +5,7 @@
 
     <parameters>
         <parameter key="ic_base_security.class.access_token">IC\Bundle\Base\SecurityBundle\Service\AccessTokenServiceInterface</parameter>
-        <parameter key="ic_base_security.class.authentication">IC\Bundle\Base\SecurityBundle\Service\AuthenticationServiceInterface</parameter>
+        <parameter key="ic_base_security.class.authentication">IC\Bundle\Base\SecurityBundle\Service\AuthenticationService</parameter>
         <parameter key="ic_base_security.class.authorization">IC\Bundle\Base\SecurityBundle\Service\AuthorizationService</parameter>
         <parameter key="ic_base_security.class.password">IC\Bundle\Base\SecurityBundle\Service\PasswordService</parameter>
     </parameters>
@@ -25,10 +25,22 @@
             </call>
         </service>
 
-        <service id="ic_base_security.service.authentication"
-                 class="%ic_base_security.class.authentication%" />
-
         <service id="ic_base_security.service.access_token"
                  class="%ic_base_security.class.access_token%" />
+
+        <service id="ic_base_security.service.authentication" class="%ic_base_security.class.authentication%">
+            <call method="setSecurityContext">
+                <argument type="service" id="security.context"/>
+            </call>
+            <call method="setSession">
+                <argument type="service" id="session"/>
+            </call>
+            <call method="setManagerRegistry">
+                <argument type="service" id="doctrine"/>
+            </call>
+            <call method="setEventDispatcher">
+                <argument type="service" id="event_dispatcher"/>
+            </call>
+        </service>
     </services>
 </container>

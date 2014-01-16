@@ -6,7 +6,7 @@
     <imports>
         <!-- Import services which are located in separated files -->
         <import resource="services/listener.xml"/>
-        <import resource="services/services.xml"/>
+        <import resource="services/service.xml"/>
         <import resource="services/twig.xml"/>
     </imports>
 
