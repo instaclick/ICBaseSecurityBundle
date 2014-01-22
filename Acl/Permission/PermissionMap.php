@@ -11,6 +11,7 @@ use Symfony\Component\Security\Acl\Permission\BasicPermissionMap;
  *
  * @author John Cartwright <johnc@nationalfibre.net>
  * @author Danilo Cabello <daniloc@nationalfibre.net>
+ * @author Anthon Pang <anthonp@nationalfibre.net>
  */
 class PermissionMap extends BasicPermissionMap
 {
@@ -18,34 +19,18 @@ class PermissionMap extends BasicPermissionMap
     const PERMISSION_CONSUME = 'CONSUME';
 
     /**
-     * @var array
-     */
-    private $map = array(
-        self::PERMISSION_EXECUTE => array(
-            MaskBuilder::MASK_EXECUTE
-        ),
-        self::PERMISSION_CONSUME => array(
-            MaskBuilder::MASK_CONSUME
-        )
-    );
-
-    /**
      * {@inheritdoc}
      */
-    public function getMasks($permission, $object)
+    public function __construct()
     {
-        if ( ! isset($this->map[$permission])) {
-            return parent::getMasks($permission, $object);
-        }
+        parent::__construct();
 
-        return $this->map[$permission];
-    }
+        $this->map[self::PERMISSION_EXECUTE] = array(
+            MaskBuilder::MASK_EXECUTE,
+        );
 
-    /**
-     * {@inheritdoc}
-     */
-    public function contains($permission)
-    {
-        return isset($this->map[$permission]) || parent::contains($permission);
+        $this->map[self::PERMISSION_CONSUME] = array(
+            MaskBuilder::MASK_CONSUME,
+        );
     }
 }
