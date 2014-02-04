@@ -25,9 +25,6 @@
             </call>
         </service>
 
-        <service id="ic_base_security.service.access_token"
-                 class="%ic_base_security.class.access_token%" />
-
         <service id="ic_base_security.service.authentication" class="%ic_base_security.class.authentication%">
             <call method="setSecurityContext">
                 <argument type="service" id="security.context"/>
