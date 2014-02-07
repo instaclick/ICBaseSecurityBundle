@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="security.acl.permission.map.class">IC\Bundle\Base\SecurityBundle\Acl\Permission\PermissionMap</parameter>
         <parameter key="ic_base_security.class.access_token">IC\Bundle\Base\SecurityBundle\Service\AccessTokenServiceInterface</parameter>
         <parameter key="ic_base_security.class.authentication">IC\Bundle\Base\SecurityBundle\Service\AuthenticationService</parameter>
         <parameter key="ic_base_security.class.authorization">IC\Bundle\Base\SecurityBundle\Service\AuthorizationService</parameter>
