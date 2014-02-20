@@ -5,8 +5,8 @@
 
 namespace IC\Bundle\Base\SecurityBundle\Twig\Extension;
 
-use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
 use IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface;
+use Symfony\Component\ExpressionLanguage\Expression;
 
 /**
  * SecurityExtension exposes security context features.

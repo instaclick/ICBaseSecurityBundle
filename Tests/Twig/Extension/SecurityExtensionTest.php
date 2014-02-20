@@ -7,7 +7,7 @@ namespace IC\Bundle\Base\SecurityBundle\Tests\Twig\Extension;
 
 use IC\Bundle\Base\SecurityBundle\Twig\Extension\SecurityExtension;
 use IC\Bundle\Base\TestBundle\Test\TestCase;
-use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
+use Symfony\Component\ExpressionLanguage\Expression;
 
 /**
  * SecurityExtensionTest
