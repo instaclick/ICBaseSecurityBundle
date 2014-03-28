@@ -46,6 +46,10 @@ class AuthorizationService implements AuthorizationServiceInterface
     {
         $objectIdentity = $this->createObjectIdentity($permission);
 
+        if ( ! $this->securityContext->getToken()) {
+            return false;
+        }
+
         return $this->securityContext->isGranted('CONSUME', $objectIdentity);
     }
 

@@ -42,17 +42,23 @@ class AuthorizationServiceTest extends TestCase
      *
      * @param boolean $expected
      * @param string  $permission
-     * @param boolean $result
+     * @param boolean $getToken
+     * @param boolean $isGranted
      *
      * @dataProvider provideDataForHasPermission
      */
-    public function testHasPermissionChecksForConsumePermission($expected, $permission, $result)
+    public function testHasPermissionChecksForConsumePermission($expected, $permission, $getToken, $isGranted)
     {
         $this->securityContext
-             ->expects($this->once())
+            ->expects($this->once())
+            ->method('getToken')
+            ->will($this->returnValue($getToken));
+
+        $this->securityContext
+             ->expects($this->any())
              ->method('isGranted')
              ->with($this->equalTo('CONSUME'), $this->equalTo(new ObjectIdentity('class', $permission)))
-             ->will($this->returnValue($result));
+             ->will($this->returnValue($isGranted));
 
         $this->assertEquals($expected, $this->authorizationService->hasPermission($permission));
     }
@@ -65,8 +71,9 @@ class AuthorizationServiceTest extends TestCase
     public function provideDataForHasPermission()
     {
         return array(
-            array(true,  'ic_base_security.service.view', true),
-            array(false, 'ic_base_security.service.view', false),
+            array(true,  'ic_base_security.service.view', true, true),
+            array(false, 'ic_base_security.service.view', false, true),
+            array(false, 'ic_base_security.service.view', true, false),
         );
     }
 
