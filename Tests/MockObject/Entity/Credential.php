@@ -69,7 +69,7 @@ class Credential extends Entity implements PasswordInterface
     /**
      * Get the password.
      *
-     * @return Password
+     * @return \IC\Bundle\Base\SecurityBundle\Entity\Password
      */
     public function getPasswordObject()
     {
@@ -79,7 +79,7 @@ class Credential extends Entity implements PasswordInterface
     /**
      * Set the password.
      *
-     * @param Password $password
+     * @param \IC\Bundle\Base\SecurityBundle\Entity\Password $password
      */
     public function setPasswordObject(Password $password)
     {
@@ -90,7 +90,7 @@ class Credential extends Entity implements PasswordInterface
     /**
      * Get the password.
      *
-     * @return Password
+     * @return \IC\Bundle\Base\SecurityBundle\Entity\Password
      */
     public function getPassword()
     {

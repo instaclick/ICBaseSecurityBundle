@@ -33,7 +33,7 @@ class ControllerListener
     /**
      * Define Authorization Service.
      *
-     * @param IC\Bundle\Base\SecurityBundle\Service\AuthorizationService $authorizationService
+     * @param \IC\Bundle\Base\SecurityBundle\Service\AuthorizationService $authorizationService
      */
     public function setAuthorizationService(AuthorizationService $authorizationService)
     {
@@ -43,7 +43,7 @@ class ControllerListener
     /**
      * Define Security Context.
      *
-     * @param Symfony\Component\Security\Core\SecurityContext $securityContext
+     * @param \Symfony\Component\Security\Core\SecurityContext $securityContext
      */
     public function setSecurityContext(SecurityContext $securityContext)
     {

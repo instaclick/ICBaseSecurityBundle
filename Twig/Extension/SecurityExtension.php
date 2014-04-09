@@ -24,7 +24,7 @@ class SecurityExtension extends \Twig_Extension
     /**
      * Define Authorization Service.
      *
-     * @param IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface $authorizationService
+     * @param \IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface $authorizationService
      */
     public function setAuthorizationService(AuthorizationServiceInterface $authorizationService)
     {

@@ -134,7 +134,7 @@ class ControllerListenerTest extends TestCase
      * @param object $controller
      * @param string $action
      *
-     * @return Symfony\Component\HttpKernel\Event\FilterControllerEvent
+     * @return \Symfony\Component\HttpKernel\Event\FilterControllerEvent
      */
     private function createEvent($controller, $action)
     {

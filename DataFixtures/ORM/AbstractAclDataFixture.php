@@ -51,9 +51,9 @@ abstract class AbstractAclDataFixture extends AbstractFixture implements Contain
     /**
      * Grant permission for a given resource and role.
      *
-     * @param string                                             $resourceName
-     * @param string                                             $permissionName
-     * @param Symfony\Component\Security\Core\Role\RoleInterface $role
+     * @param string                                              $resourceName
+     * @param string                                              $permissionName
+     * @param \Symfony\Component\Security\Core\Role\RoleInterface $role
      */
     private function grantPermission($resourceName, $permissionName, RoleInterface $role)
     {
