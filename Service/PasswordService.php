@@ -28,7 +28,7 @@ class PasswordService
     /**
      * Define the Encoder Factory.
      *
-     * @param EncoderFactory $encoderFactory Encoder factory
+     * @param \Symfony\Component\Security\Core\Encoder\EncoderFactory $encoderFactory Encoder factory
      */
     public function setEncoderFactory(EncoderFactory $encoderFactory)
     {

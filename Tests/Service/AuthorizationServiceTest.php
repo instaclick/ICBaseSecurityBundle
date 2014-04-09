@@ -80,11 +80,11 @@ class AuthorizationServiceTest extends TestCase
     /**
      * [testIsGranted description]
      *
-     * @param boolean                                              $expected
-     * @param string                                               $operation
-     * @param string|object                                        $domainObject
-     * @param Symfony\Component\Security\Acl\Domain\ObjectIdentity $objectIdentity
-     * @param boolean                                              $result
+     * @param boolean                                               $expected
+     * @param string                                                $operation
+     * @param string|object                                         $domainObject
+     * @param \Symfony\Component\Security\Acl\Domain\ObjectIdentity $objectIdentity
+     * @param boolean                                               $result
      *
      * @dataProvider provideDataForIsGranted
      */
