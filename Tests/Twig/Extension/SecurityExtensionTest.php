@@ -102,6 +102,39 @@ class SecurityExtensionTest extends TestCase
     }
 
     /**
+     * Test is authorized results in granted for false expressions.
+     *
+     * @param mixed $authorization
+     *
+     * @dataProvider provideDataForIsAuthorizedResultsInGrantedForFalseExpressions
+     */
+    public function testIsAuthorizedResultsInGrantedForFalseExpressions($authorization)
+    {
+        $this->authorizationService
+             ->expects($this->never())
+             ->method('isGranted');
+
+        $this->assertTrue($this->securityExtension->isAuthorized($authorization));
+    }
+
+    /**
+     * Provide data for is authorized results in granted for false expressions.
+     *
+     * @return array
+     */
+    public function provideDataForIsAuthorizedResultsInGrantedForFalseExpressions()
+    {
+        return array(
+            array(false),
+            array(0),
+            array("0"),
+            array(null),
+            array(array()),
+            array(''),
+        );
+    }
+
+    /**
      * Test getFunctions.
      */
     public function testGetFunctions()
