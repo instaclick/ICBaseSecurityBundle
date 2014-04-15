@@ -17,7 +17,7 @@ use Symfony\Component\ExpressionLanguage\Expression;
 class SecurityExtension extends \Twig_Extension
 {
     /**
-     * @var IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface
+     * @var \IC\Bundle\Base\SecurityBundle\Service\AuthorizationServiceInterface
      */
     private $authorizationService;
 

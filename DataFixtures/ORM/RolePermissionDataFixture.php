@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class RolePermissionDataFixture extends AbstractFixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     /**
-     * @var ContainerInterface
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
     private $container;
 

@@ -22,7 +22,7 @@ use IC\Bundle\Base\SecurityBundle\Acl\Permission\MaskBuilder;
 abstract class AbstractAclDataFixture extends AbstractFixture implements ContainerAwareInterface
 {
     /**
-     * @var ContainerInterface
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
     private $container;
 

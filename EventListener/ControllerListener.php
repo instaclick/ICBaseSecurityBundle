@@ -21,12 +21,12 @@ use Symfony\Component\Security\Core\SecurityContext;
 class ControllerListener
 {
     /**
-     * @var IC\Bundle\Base\SecurityBundle\Service\AuthorizationService
+     * @var \IC\Bundle\Base\SecurityBundle\Service\AuthorizationService
      */
     private $authorizationService;
 
     /**
-     * @var Symfony\Component\Security\Core\SecurityContext
+     * @var \Symfony\Component\Security\Core\SecurityContext
      */
     private $securityContext;
 
