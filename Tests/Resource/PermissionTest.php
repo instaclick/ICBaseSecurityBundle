@@ -10,10 +10,10 @@ use IC\Bundle\Base\TestBundle\Test\TestCase;
 
 /**
  * PermissionTest
- * 
+ *
  * @group ICBaseSecurityBundle
  * @group Unit
- * 
+ *
  * @author Danilo Cabello <daniloc@nationalfibre.net>
  */
 class PermissionTest extends TestCase
